@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Product } from '../models/product.model';
-import { ProductService } from '../services/product.service';
+import { Product } from '../state/product.model';
+import { ProductService } from '../state/product.service';
 
 @Component({
   selector: 'app-add-product',
@@ -28,9 +28,9 @@ export class AddProductComponent implements OnInit {
     let product = new Product();
     product.name=this.form.value['name'];
     product.price=this.form.value['price'];
-    // if description != 'Pas de description'
-    // if inStock === true
-    //console.log('essaye d\'envoyer le produit : ', product);
+    // TODO: gestion des propriétés facultatives, prix négatif, etc...
+
+    //console.log('essaye d\'ajouter le produit : ', product);
     this.productService.addProduct(product).subscribe();
     this.router.navigate(['..']);
   }

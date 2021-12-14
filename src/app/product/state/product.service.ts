@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { Observable, Subject, Subscription, map } from 'rxjs';
-import { Product } from '../models/product.model';
+import { Product } from './product.model';
 
 @Injectable({
   providedIn: 'root'

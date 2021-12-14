@@ -4,23 +4,23 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductPreviewComponent } from './product-preview/product-preview.component';
-import { ProductService } from './services/product.service';
-import { AuthComponent } from './auth/auth.component';
-import { AuthService } from './services/auth.service';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { EditProductComponent } from './edit-product/edit-product.component';
-import { AuthGuard } from './services/auth-guard.service';
+import { ProductListComponent } from './product/list/product-list.component';
+import { ProductPreviewComponent } from './product/preview/product-preview.component';
+import { ProductService } from './product/state/product.service';
+import { LoginComponent } from './auth/login/login.component';
+import { AuthService } from './auth/state/auth.service';
+import { ProductDetailComponent } from './product/detail/product-detail.component';
+import { EditProductComponent } from './product/edit/edit-product.component';
+import { AuthGuard } from './auth/state/auth-guard.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AddProductComponent } from './add-product/add-product.component';
+import { AddProductComponent } from './product/add/add-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
     ProductPreviewComponent,
-    AuthComponent,
+    LoginComponent,
     ProductDetailComponent,
     EditProductComponent,
     AddProductComponent

@@ -7,6 +7,9 @@
                 <app-product-preview *ngFor="let product of products | async"
                     [product]="product"></app-product-preview>
             </ul>
+            <!--
+                TODO: gérer problème connexion au serveur / réponse erronée / liste vide
+            -->
             <button class="btn btn-primary" (click)="onClick()">Ajouter un produit</button>
         </div>
     </div>

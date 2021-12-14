@@ -7,8 +7,10 @@ export class Product {
 }
 
 /*
-readonly _id: string;
-description?: string;
-price: number;
-inStock?: boolean;
+export interface Product {
+    readonly _id: string;
+    description?: string;
+    price: number;
+    inStock?: boolean;
+}
 */
