@@ -1,0 +1,21 @@
+<!--
+    formulaire de connexion et d'inscription en commun
+    à séparer dans deux components plus tard
+    en profiter pour ajouter un captcha ou equ. au moment de l'inscription,
+    de même qu'une confirmation du mdp, et vérif de la dispo du nom d'utilisateur
+-->
+<a [routerLink]="'/'">Accueil</a>
+<p></p>
+<div class="col-sm-8 col-sm-offset-2">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+        <div class="form-group">
+            <label for="name">Pseudo</label>
+            <input type="text" id="name" class="form-control" formControlName="name">
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" class="form-control" formControlName="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Soumettre</button>
+    </form>
+</div>

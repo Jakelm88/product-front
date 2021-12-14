@@ -1,0 +1,13 @@
+<a routerLink="auth">Connexion</a>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Liste de produits</h2>
+            <ul class="list-group">
+                <app-product-preview *ngFor="let product of products | async"
+                    [product]="product"></app-product-preview>
+            </ul>
+            <button class="btn btn-primary" (click)="onClick()">Ajouter un produit</button>
+        </div>
+    </div>
+</div>
