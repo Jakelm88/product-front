@@ -25,7 +25,7 @@ export class AddProductComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
-    let product = new Product();
+    let product = Product();
     product.name=this.form.value['name'];
     product.price=this.form.value['price'];
     // TODO: gestion des propriétés facultatives, prix négatif, etc...

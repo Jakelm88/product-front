@@ -7,7 +7,7 @@ import { Product } from '../state/product.model';
   styleUrls: ['./product-preview.component.css']
 })
 export class ProductPreviewComponent implements OnInit {
-  @Input() product = new Product;
+  @Input() product = Product();
 
   constructor() { }
 

@@ -10,7 +10,7 @@ import { ProductService } from '../state/product.service';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
-  product = new Product();
+  product = Product();
   productSub = new Subscription();
   
   constructor(private productService : ProductService, private router: Router, private route : ActivatedRoute) {}

@@ -15,19 +15,19 @@ export class EditProductComponent implements OnInit, OnDestroy {
   @Input() price: number;
   @Input() inStock: boolean;
 
-  product = new Product();
+  product = Product();
   id = this.route.snapshot.params['id'];
   productSub = this.productService.getProductById(this.id)
     .subscribe(res => { this.product = res; });
 
   constructor ( private productService : ProductService,
     private router : Router, private route : ActivatedRoute ){
-      let tmp = new Product();
+      let tmp = Product();
       tmp = { ...this.product };
       this.name = tmp.name;
-      this.description = tmp.description;
+      this.description = tmp.description?tmp.description:'';
       this.price = tmp.price;
-      this.inStock = tmp.inStock;
+      this.inStock = tmp.inStock?tmp.inStock:false;
   }
 
   ngOnInit(): void {}
