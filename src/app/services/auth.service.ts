@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Res } from '../models/res.model';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -14,7 +13,7 @@ export class AuthService {
     }
 
     signIn(user: User) {
-        return this.httpClient.post<Res>('http://localhost:3000/api/auth/login', user);
+        return this.httpClient.post<{ userId: any, token: string }>('http://localhost:3000/api/auth/login', user);
     }
 
     signOut() {
