@@ -29,14 +29,17 @@ export class ProductsService {
   }
 
   add(product: Product) {
+    // envoyer au serveur puis mettre la réponse (avec le bon _id dans le store)
     this.productsStore.add(product);
   }
 
   update(id: ID, product: Partial<Product>) {
+    // envoyer au serveur et si réponse pos alors update le store
     this.productsStore.update(id, product);
   }
 
   remove(id: ID) {
+    // envoyer au serveur et si réponse pos alors remove du store
     this.productsStore.remove(id);
   }
 

@@ -1,33 +1,27 @@
-<!--
-    Formulaire / Inputs modification du produit
-    Bouton submit / enregistrer modifs
-    importance de regrouper les propriétés { ...product, ...res } ?
-    on veut pouvoir ajouter dans les champs qui n'existent pas encore
-    mais ne renvoyer au serveur que ce qui est renseigné
-    attention : name et price sont obligatoire sur la bd
--->
 <div class="col-sm-8 col-sm-offset-2">
-    <div>
-        <div>
-            <label>Nom du produit</label>
-            <input type="text" id="name" [(ngModel)]="name">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Nom du produit</label>
+            <input type="text" id="name" class="form-control" formControlName="name">
+            <div *ngIf="error==='name'">Le nom ne peut être vide.</div>
         </div>
-        <div>
+        <div class="form-group">
             <label for="description">Description</label>
-            <input type="text" id="description" [(ngModel)]="description">
+            <input type="text" id="description" class="form-control" formControlName="description">
         </div>
-        <div>
+        <div class="form-group">
             <label for="price">Prix</label>
-            <input type="number" id="price" [(ngModel)]="price">
+            <input type="number" id="price" class="form-control" formControlName="price">
+            <div *ngIf="error==='price'">Le prix ne peut être négatif.</div>
         </div>
-        <div>
+        <div class="form-group">
             <label for="inStock">Le produit est-il disponible ?</label>
-            <select id="inStock" [(ngModel)]="inStock">
+            <select id="inStock" class="form-control" formControlName="inStock">
                 <option value="false">Non</option>
                 <option value="true">Oui</option>
             </select>
         </div>
-        <button class="btn btn-primary" (click)="onSubmit()">Modifier</button>
-    </div>
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </form>
 </div>
 <button class="btn btn-primary" (click)="onCancel()">Annuler</button>
