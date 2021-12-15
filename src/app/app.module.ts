@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { ProductModule } from './product/product.module';
     LoginComponent
   ],
   imports: [
+    AkitaNgDevtools.forRoot(),
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,

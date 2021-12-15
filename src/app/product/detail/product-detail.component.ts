@@ -19,6 +19,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     const id = this.route.snapshot.params['id'];
     this.productSub = this.productService.getProductById(id).subscribe(res => {
       this.product = {...this.product, ...res};
+      //console.log('produit : ', this.product);
     });
   }
 
