@@ -12,15 +12,15 @@ import { ProductsService } from '../state/products.service';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
-  product : any;
-  //productSub = new Subscription();
+  product: any;
+  productSub = new Subscription();
   
   constructor(private productService : ProductsService, private productsQuery: ProductsQuery,
     private router: Router, private route : ActivatedRoute) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
-    this.product = this.productsQuery.getEntity(id);
+    this.productSub = this.productsQuery.selectEntity(id).subscribe(res => { this.product = res });
     /*this.productSub = this.productService.getProductById(id).subscribe(res => {
       this.product = {...this.product, ...res};
       //console.log('produit : ', this.product);
@@ -41,7 +41,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    //this.productSub.unsubscribe();
+    this.productSub.unsubscribe();
   }
 
 }
