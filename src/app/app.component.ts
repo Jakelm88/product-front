@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   constructor(private productService : ProductsService) {}
 
   ngOnInit(): void {
-      this.productService.get().subscribe();
+      this.productService.get();
   }
 
 }

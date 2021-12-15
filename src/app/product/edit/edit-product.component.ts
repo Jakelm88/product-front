@@ -17,7 +17,7 @@ export class EditProductComponent implements OnInit, OnDestroy {
   error = '';
 
   id = this.route.snapshot.params['id'];
-  product = this.productsQuery.getEntity(this.id);
+  product = this.productsQuery.getEntity(this.id) as Product;
 
   constructor ( private productService : ProductsService, private productsQuery : ProductsQuery,
     private router : Router, private route : ActivatedRoute,
@@ -41,14 +41,14 @@ export class EditProductComponent implements OnInit, OnDestroy {
     if(value['name'] === '') return this.error = 'name';
     if(value['price'] < 0) return this.error = 'price';
     if(value['description'] === this.product?.description || value['description'] === null) delete value.description;
-    if(value['inStock'] != 'true') delete value.inStock; else { delete value.inStock; value.inStock = true; }
+    if(value['inStock'] != 'true') { delete value.inStock; value.inStock = false } else { delete value.inStock; value.inStock = true; }
 
     product = { ...value };
     console.log('essaye de modifier avec : ', product);
 
     // On peut vérifier que l'utilisateur a le droit de le faire, le serveur devra aussi verifier
     //this.productService.modifyProduct(this.product._id, this.product).subscribe();
-    this.productService.update(this.id, product);
+    this.productService.update(this.product._id, product);
     this.router.navigate(['/item', this.id]);
     return 'ok';
   }
