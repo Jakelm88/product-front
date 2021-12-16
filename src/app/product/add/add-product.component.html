@@ -10,7 +10,7 @@
             <textarea matInput type="text" id="description" class="form-control" formControlName="description"></textarea>
         </mat-form-field>
         <mat-form-field appearance="outline">
-            <mat-label for="price">Prix</mat-label>
+            <mat-label for="price">Prix (euros)</mat-label>
             <input matInput type="number" id="price" class="form-control" formControlName="price">
             <mat-error *ngIf="price.invalid">Le prix ne peut être négatif.</mat-error>
         </mat-form-field>

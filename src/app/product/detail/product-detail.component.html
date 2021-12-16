@@ -1,12 +1,14 @@
-<a [routerLink]="''">Revenir à la liste</a>
+<a mat-flat-button color="accent" [routerLink]="''">Revenir à la liste</a>
 
 <!--
     TODO: afficher les détails du produit, gérer les propriétés facultatives
 -->
-<h4>{{ product.name }}</h4>
-<p>description : {{ product.description }}.</p>
-<h2>prix : {{ product.price }}</h2>
-<p>product-detail works!</p>
+<div class="col-center">
+    <h4>{{ product.name }}</h4>
+    <p>description : {{ product.description }}</p>
+    <h2>prix : {{ product.price }} €</h2>
+    <p>en stock : {{ product.inStock?'Oui':'Non' }}</p>
+</div>
 
-<button class="btn btn-primary" (click)="onModify()">Modifier</button>
-<button class="btn btn-danger" (click)="onDelete()">Supprimer le produit</button>
+<button mat-flat-button color="warn" class="btn" (click)="onDelete()">Supprimer le produit</button>
+<button mat-flat-button color="primary" class="btn" (click)="onModify()">Modifier</button>

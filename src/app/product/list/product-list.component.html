@@ -2,7 +2,7 @@
     TODO: gérer problème connexion au serveur / réponse erronée / liste vide
 -->
 
-<a routerLink="auth">Connexion</a>
+<a mat-flat-button color="accent" routerLink="auth">Connexion</a>
 <h2 class="title">Liste de produits</h2>
 <mat-list>
     <app-product-preview *ngFor="let product of products | async" [product]="product"></app-product-preview>

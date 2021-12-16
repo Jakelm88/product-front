@@ -1,0 +1,2 @@
+.col-center { border: 3px solid #bbbbbb; border-radius: 5px; padding: 5px; margin: 20px; }
+mat-form-field { display: flex; flex-direction: column; align-items: flex-start; }

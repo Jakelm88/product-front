@@ -14,7 +14,6 @@ import { ProductsService } from '../state/products.service';
 })
 export class EditProductComponent implements OnInit, OnDestroy {
   form: FormGroup;
-  //error = '';
 
   id = this.route.snapshot.params['id'];
   product = this.productsQuery.getEntity(this.id) as Product;
@@ -41,11 +40,9 @@ export class EditProductComponent implements OnInit, OnDestroy {
     console.log('form.value : ', value);
     let product;
     
-    // gestion des propriétés facultatives, prix négatif, erreurs
-    //if(value['name'] === '') return this.error = 'name';
-    //if(value['price'] < 0) return this.error = 'price';
-    if(value['description'] === this.product?.description || value['description'] === null) delete value.description;
-    if(value['inStock'] != 'true') { delete value.inStock; value.inStock = false } else { delete value.inStock; value.inStock = true; }
+    // gestion des propriétés facultatives
+    if(value['description'] === null || value['description'] === '') delete value.description;
+    if(value['inStock'] != 'true') delete value.inStock; else { delete value.inStock; value.inStock = true; }
 
     product = { ...value };
     console.log('essaye de modifier avec : ', product);
@@ -54,7 +51,6 @@ export class EditProductComponent implements OnInit, OnDestroy {
     //this.productService.modifyProduct(this.product._id, this.product).subscribe();
     this.productService.update(this.product._id, product);
     this.router.navigate(['/item', this.id]);
-    //return 'ok';
   }
 
   onCancel(){
