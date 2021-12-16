@@ -1,5 +1,5 @@
-<li class="list-group-item">
-    <h4>{{ product.name }}</h4>
-    <p>{{ product.price }}</p>
+<mat-list-item>
+    <h4 matLine>{{ product.name | titlecase }}</h4>
+    <p matLine>prix: {{ product.price }} €</p>
     <a [routerLink]="'item/'+[product._id]">Détail</a>
-</li>
+</mat-list-item>

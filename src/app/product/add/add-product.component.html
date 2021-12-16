@@ -1,27 +1,27 @@
-<div class="col-sm-8 col-sm-offset-2">
+<div class="col-center">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label for="name">Nom du produit</label>
-            <input type="text" id="name" class="form-control" formControlName="name">
-            <div *ngIf="error==='name'">Le nom ne peut être vide.</div>
-        </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <input type="text" id="description" class="form-control" formControlName="description">
-        </div>
-        <div class="form-group">
-            <label for="price">Prix</label>
-            <input type="number" id="price" class="form-control" formControlName="price">
-            <div *ngIf="error==='price'">Le prix ne peut être négatif.</div>
-        </div>
-        <div class="form-group">
-            <label for="inStock">Le produit est-il disponible ?</label>
-            <select id="inStock" class="form-control" formControlName="inStock">
-                <option selected value="false">Non</option>
-                <option value="true">Oui</option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Ajouter</button>
+        <mat-form-field appearance="outline">
+            <mat-label for="name">Nom du produit</mat-label>
+            <input matInput type="text" id="name" class="form-control" formControlName="name">
+            <mat-error *ngIf="name.invalid">Le nom doit être d'au-moins 4 caractères.</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label for="description">Description</mat-label>
+            <textarea matInput type="text" id="description" class="form-control" formControlName="description"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label for="price">Prix</mat-label>
+            <input matInput type="number" id="price" class="form-control" formControlName="price">
+            <mat-error *ngIf="price.invalid">Le prix ne peut être négatif.</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label for="inStock">Le produit est-il disponible ?</mat-label>
+            <mat-select id="inStock" class="form-control" formControlName="inStock">
+                <mat-option selected value="false">Non</mat-option>
+                <mat-option value="true">Oui</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-flat-button color="accent" type="submit" [disabled]="form.invalid">Ajouter</button>
+        <button mat-flat-button color="primary" type="button" (click)="onCancel()">Annuler</button>
     </form>
 </div>
-<button class="btn btn-primary" (click)="onCancel()">Annuler</button>

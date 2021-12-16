@@ -1,16 +1,10 @@
+<!--
+    TODO: gérer problème connexion au serveur / réponse erronée / liste vide
+-->
+
 <a routerLink="auth">Connexion</a>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <h2>Liste de produits</h2>
-            <ul class="list-group">
-                <app-product-preview *ngFor="let product of products | async"
-                    [product]="product"></app-product-preview>
-            </ul>
-            <!--
-                TODO: gérer problème connexion au serveur / réponse erronée / liste vide
-            -->
-            <button class="btn btn-primary" (click)="onClick()">Ajouter un produit</button>
-        </div>
-    </div>
-</div>
+<h2 class="title">Liste de produits</h2>
+<mat-list>
+    <app-product-preview *ngFor="let product of products | async" [product]="product"></app-product-preview>
+</mat-list>
+<button mat-flat-button color="primary" class="btn" (click)="onClick()">Ajouter un produit</button>

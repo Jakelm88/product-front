@@ -12,14 +12,17 @@ import { ProductsService } from '../state/products.service';
 })
 export class AddProductComponent implements OnInit {
   form: FormGroup;
-  error = '';
+
+  // Methodes get comme raccourci vers les controles du formulaire (utilisées dans le template par les *ngIf des validators)
+  get name(): any { return this.form.get('name'); }
+  get price(): any { return this.form.get('price'); }
 
   constructor( private productService: ProductsService, private router: Router,
     private formBuilder: FormBuilder ){
     this.form = this.formBuilder.group({
-      name : ['', Validators.required],
-      description : 'Pas de description',
-      price : [0, Validators.required],
+      name : [null, [ Validators.required, Validators.minLength(4) ]],
+      description : null,
+      price : [0, [ Validators.required, Validators.min(0) ]],
       inStock : 'false'
     });
   }
@@ -30,10 +33,8 @@ export class AddProductComponent implements OnInit {
     let value = this.form.value;
     let product;
     
-    // gestion des propriétés facultatives, prix négatif, erreurs
-    if(value['name'] === '') return this.error = 'name';
-    if(value['price'] < 0) return this.error = 'price';
-    if(value['description'] === 'Pas de description' || value['description'] === '') delete value.description;
+    // gestion des propriétés facultatives
+    if(value['description'] === null || value['description'] === '') delete value.description;
     if(value['inStock'] != 'true') delete value.inStock; else { delete value.inStock; value.inStock = true; }
 
     product = { ...value };
@@ -42,7 +43,6 @@ export class AddProductComponent implements OnInit {
     //this.productService.addProduct(product).subscribe();
     this.productService.add(product);
     this.router.navigate(['..']);
-    return 'ok';
   }
 
   onCancel() {
