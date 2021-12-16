@@ -14,18 +14,22 @@ import { ProductsService } from '../state/products.service';
 })
 export class EditProductComponent implements OnInit, OnDestroy {
   form: FormGroup;
-  error = '';
+  //error = '';
 
   id = this.route.snapshot.params['id'];
   product = this.productsQuery.getEntity(this.id) as Product;
+
+  // Methodes get comme raccourci vers les controles du formulaire (utilisées dans le template par les *ngIf des validators)
+  get name(): any { return this.form.get('name'); }
+  get price(): any { return this.form.get('price'); }
 
   constructor ( private productService : ProductsService, private productsQuery : ProductsQuery,
     private router : Router, private route : ActivatedRoute,
     private formBuilder: FormBuilder ){
       this.form = this.formBuilder.group({
-        name : [this.product?.name, Validators.required],
+        name : [this.product?.name, [ Validators.required, Validators.minLength(4) ]],
         description : this.product?.description,
-        price : [this.product?.price, Validators.required],
+        price : [this.product?.price, [ Validators.required, Validators.min(0) ]],
         inStock : this.product?.inStock? 'true' : 'false'
       });
   }
@@ -38,8 +42,8 @@ export class EditProductComponent implements OnInit, OnDestroy {
     let product;
     
     // gestion des propriétés facultatives, prix négatif, erreurs
-    if(value['name'] === '') return this.error = 'name';
-    if(value['price'] < 0) return this.error = 'price';
+    //if(value['name'] === '') return this.error = 'name';
+    //if(value['price'] < 0) return this.error = 'price';
     if(value['description'] === this.product?.description || value['description'] === null) delete value.description;
     if(value['inStock'] != 'true') { delete value.inStock; value.inStock = false } else { delete value.inStock; value.inStock = true; }
 
@@ -50,7 +54,7 @@ export class EditProductComponent implements OnInit, OnDestroy {
     //this.productService.modifyProduct(this.product._id, this.product).subscribe();
     this.productService.update(this.product._id, product);
     this.router.navigate(['/item', this.id]);
-    return 'ok';
+    //return 'ok';
   }
 
   onCancel(){
