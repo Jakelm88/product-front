@@ -1,5 +1,5 @@
 * { --borderColor: #bbbbbb; }
 .title { position: relative; left: 30px; margin-top: 20px; }
-mat-list { border: 3px solid var(--borderColor); border-radius: 5px; padding-top: 0px; margin: 20px; }
+mat-list { border: 3px solid var(--borderColor); border-radius: 5px; padding: 5px; margin: 20px; }
 app-product-preview { text-align: center; }
 .btn { position: absolute; right: 20px; }
