@@ -8,10 +8,10 @@ import { ProductDetailComponent } from './product/detail/product-detail.componen
 import { ProductListComponent } from './product/list/product-list.component';
 
 const routes: Routes = [
-  { path: '', canActivate: [AuthGuard], component: ProductListComponent },
+  { path: '', component: ProductListComponent },
   { path: 'new', canActivate: [AuthGuard], component: AddProductComponent },
   { path: 'item/edit/:id', canActivate: [AuthGuard], component: EditProductComponent },
-  { path: 'item/:id', canActivate: [AuthGuard], component: ProductDetailComponent },
+  { path: 'item/:id', component: ProductDetailComponent },
   { path: 'auth', component: LoginComponent },
   { path: '**', redirectTo: '' }
 ];
